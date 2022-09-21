@@ -1,0 +1,89 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="mainBorderPane" fx:controller="br.com.pedropareschi.todoList.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New..." onAction="#showNewItemDialogue"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Edit..." onAction="#handleEditItem"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Delete..." onAction="#handleDeleteItem"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox>
+                    <Button onAction="#showNewItemDialogue">
+                        <tooltip>
+                            <Tooltip text="Add a new todo item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/New24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Separator/>
+                    <Button onAction="#handleEditItem">
+                    <tooltip>
+                        <Tooltip text="Edit selected todo item"/>
+                    </tooltip>
+                    <graphic>
+                        <ImageView>
+                            <Image url="@/toolbarButtonGraphics/general/Edit24.gif"/>
+                        </ImageView>
+                    </graphic>
+                    </Button>
+                    <Separator/>
+                    <Button onAction="#handleDeleteItem">
+                        <tooltip>
+                            <Tooltip text="Delete selected todo item"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/Delete24.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Separator/>
+                    <ToggleButton fx:id="filterToggleButton" text="Today's items" onAction="#handleFilterButton">
+                        <tooltip>
+                            <Tooltip text="Button Down: Show Today's items only. Bottom up: Show all items"/>
+                        </tooltip>
+                    </ToggleButton>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="todoListView" onKeyPressed="#handleKeyPressed">
+
+        </ListView>
+    </left>
+    <center>
+        <VBox style="-fx-background-color: white">
+            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true"/>
+            <HBox>
+                <Label text="Due: " style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+                <Label fx:id="deadlineLabel" style="-fx-background-color: white">
+                    <font>
+                        <Font name="Times New Roman bold" size="20"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
